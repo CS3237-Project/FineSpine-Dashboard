@@ -1,11 +1,20 @@
 import React from "react";
-import PageContainer from "../../components/wrappers/PageContainer";
+import { Container, Row, Col } from "reactstrap";
+import { PageContainer, Widget } from "../../components";
 
 class HomePage extends React.Component {
   render() {
     return (
       <div className="HomePage">
-        <PageContainer />
+        <PageContainer>
+          <Container fluid>
+            <Row>
+              <Col sm={12}>
+                <Widget title="Test Widget" subtitle="Test Subtitle" />
+              </Col>
+            </Row>
+          </Container>
+        </PageContainer>
       </div>
     );
   }

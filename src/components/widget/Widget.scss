@@ -1,0 +1,15 @@
+.Widget {
+  .card {
+    .widget-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .widget-subtitle {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    canvas {
+      margin: 0 auto;
+    }
+  }
+}
