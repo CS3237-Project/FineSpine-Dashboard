@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 
 export const SIDEBAR_WIDTH_OPEN = 300;
 export const SIDEBAR_WIDTH_CLOSED = 50;
@@ -23,19 +24,32 @@ const Sidebar = ({ isOpen, toggle, links, onLinkClick, history }) => {
         <img
           src={require("../../logo.svg")}
           alt="logo"
-          style={{ height: isOpen ? 75 : 30 }}
+          style={{ height: isOpen ? 75 : 50 }}
         />
       </div>
 
       <div className="sidebar-link-list">
         {links.map(i => (
-          <div
-            key={i.text}
-            onClick={() => onLinkClick(i, history)}
-            className={`sidebar-link ${i.active ? "active" : ""}`}
-          >
-            {i.icon} {isOpen && i.text}
-          </div>
+          <Fragment key={i.text}>
+            {!isOpen && (
+              <ReactTooltip
+                id={i.text}
+                place="right"
+                type="dark"
+                effect="float"
+              >
+                <span>{i.text}</span>
+              </ReactTooltip>
+            )}
+            <div
+              data-tip
+              data-for={i.text}
+              onClick={() => onLinkClick(i, history)}
+              className={`sidebar-link ${i.active ? "active" : ""}`}
+            >
+              {i.icon} {isOpen && i.text}
+            </div>
+          </Fragment>
         ))}
       </div>
     </div>
