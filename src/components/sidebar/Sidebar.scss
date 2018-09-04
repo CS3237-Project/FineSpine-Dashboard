@@ -1,0 +1,38 @@
+$sidebar-background-color: #2a3f54;
+.Sidebar {
+  min-height: 100vh;
+  background-color: $sidebar-background-color;
+  color: #e7e7e7;
+  transition: all 0.25s ease-in-out;
+
+  .sidebar-header {
+    height: 50px;
+    .sidebar-toggle-button {
+      cursor: pointer;
+      i {
+        font-size: 30px;
+        float: right;
+        padding-top: 10px;
+        padding-right: 15px;
+      }
+    }
+  }
+
+  .sidebar-link-list {
+    .sidebar-link {
+      padding: 20px 10px;
+      cursor: pointer;
+
+      a {
+        color: #e7e7e7 !important;
+        text-decoration: none;
+      }
+
+      &:hover {
+        background-color: lighten($sidebar-background-color, 10);
+      }
+      &.active {
+      }
+    }
+  }
+}
