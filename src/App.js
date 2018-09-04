@@ -13,13 +13,14 @@ class App extends Component {
     links: [
       {
         icon: <i className="fa fa-home" aria-hidden="true" />,
-        text: "Home",
-        path: "/"
+        text: "Overview",
+        path: "/",
+        active: true
       },
       {
         icon: <i className="fa fa-sliders" aria-hidden="true" />,
-        text: "Dummy",
-        path: "/dummy"
+        text: "Activity",
+        path: "/activity"
       }
     ]
   };

@@ -10,7 +10,8 @@ const Widget = ({
   body,
   footer,
   badgeText,
-  currentState = null
+  currentState = null,
+  height
 }) => {
   return (
     <div className="Widget">
@@ -22,7 +23,7 @@ const Widget = ({
               {badgeText !== null &&
                 badgeText !== undefined && (
                   <span style={{ float: "right" }}>
-                    <Badge style={{ backgroundColor: backgroundColor[1] }}>
+                    <Badge style={{ backgroundColor: backgroundColor[0] }}>
                       {badgeText}
                     </Badge>
                   </span>
@@ -33,10 +34,14 @@ const Widget = ({
             <div className="widget-subtitle text-muted">{subtitle}</div>
           )}
           {currentState === null &&
-            body && <div className="widget-body">{body}</div>}
+            body && (
+              <div className="widget-body" style={{ height }}>
+                {body}
+              </div>
+            )}
           {currentState === "loading" && (
             <CenterWrapper height={150}>
-              <Loader color={backgroundColor[1]} />
+              <Loader color={backgroundColor[0]} />
             </CenterWrapper>
           )}
           {currentState === "error" && (

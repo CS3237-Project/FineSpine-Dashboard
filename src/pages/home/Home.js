@@ -1,6 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import { PageContainer, Widget } from "../../components";
+import MonthlyRevenueWidget from "./MonthlyRevenueWidget";
+import RevenueBreakdownWidget from "./RevenueBreakdownWidget";
+import NewCustomersWidget from "./NewCustomersWidget";
+import { PageContainer } from "../../components";
 
 class HomePage extends React.Component {
   render() {
@@ -10,7 +13,15 @@ class HomePage extends React.Component {
           <Container fluid>
             <Row>
               <Col sm={12}>
-                <Widget title="Test Widget" subtitle="Test Subtitle" />
+                <MonthlyRevenueWidget />
+              </Col>
+            </Row>
+            <Row>
+              <Col sm={12} lg={6}>
+                <RevenueBreakdownWidget />
+              </Col>
+              <Col sm={12} lg={6}>
+                <NewCustomersWidget />
               </Col>
             </Row>
           </Container>
