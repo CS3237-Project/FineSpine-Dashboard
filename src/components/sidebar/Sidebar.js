@@ -1,10 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 export const SIDEBAR_WIDTH_OPEN = 300;
 export const SIDEBAR_WIDTH_CLOSED = 50;
 
-const Sidebar = ({ isOpen, toggle, links }) => {
+const Sidebar = ({ isOpen, toggle, links, onLinkClick, history }) => {
   return (
     <div
       className="Sidebar"
@@ -19,12 +19,22 @@ const Sidebar = ({ isOpen, toggle, links }) => {
         </div>
       </div>
 
+      <div className="sidebar-logo">
+        <img
+          src={require("../../logo.svg")}
+          alt="logo"
+          style={{ height: isOpen ? 75 : 30 }}
+        />
+      </div>
+
       <div className="sidebar-link-list">
         {links.map(i => (
-          <div className="sidebar-link">
-            <Link to={i.path}>
-              {i.icon} {i.text}
-            </Link>
+          <div
+            key={i.text}
+            onClick={() => onLinkClick(i, history)}
+            className={`sidebar-link ${i.active ? "active" : ""}`}
+          >
+            {i.icon} {isOpen && i.text}
           </div>
         ))}
       </div>
@@ -32,4 +42,4 @@ const Sidebar = ({ isOpen, toggle, links }) => {
   );
 };
 
-export default Sidebar;
+export default withRouter(Sidebar);

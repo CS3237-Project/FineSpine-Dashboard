@@ -7,24 +7,43 @@ import {
   SIDEBAR_WIDTH_CLOSED
 } from "./components/sidebar/Sidebar";
 
-const links = [
-  {
-    icon: <i className="fa fa-home" aria-hidden="true" />,
-    text: "Home",
-    path: "/"
-  }
-];
 class App extends Component {
   state = {
-    sidebarIsOpen: true
+    sidebarIsOpen: true,
+    links: [
+      {
+        icon: <i className="fa fa-home" aria-hidden="true" />,
+        text: "Home",
+        path: "/"
+      },
+      {
+        icon: <i className="fa fa-sliders" aria-hidden="true" />,
+        text: "Dummy",
+        path: "/dummy"
+      }
+    ]
   };
 
   toggleSidebar = () => {
     this.setState({ sidebarIsOpen: !this.state.sidebarIsOpen });
   };
 
+  setActiveLink = (link, history) => {
+    this.setState(
+      {
+        links: this.state.links.map(l => ({
+          ...l,
+          active: link.text === l.text
+        }))
+      },
+      () => {
+        history.push(link.path);
+      }
+    );
+  };
+
   render() {
-    const { sidebarIsOpen } = this.state;
+    const { sidebarIsOpen, links } = this.state;
     return (
       <div className="App-wrapper">
         <Router>
@@ -32,6 +51,7 @@ class App extends Component {
             <Sidebar
               isOpen={sidebarIsOpen}
               toggle={this.toggleSidebar}
+              onLinkClick={this.setActiveLink}
               links={links}
             />
             <div
