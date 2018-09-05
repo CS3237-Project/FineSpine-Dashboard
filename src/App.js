@@ -25,20 +25,33 @@ class App extends Component {
     ]
   };
 
+  componentDidMount() {
+    //set active link based on window path
+    this.setActiveLink(window.location.pathname);
+  }
+
   toggleSidebar = () => {
     this.setState({ sidebarIsOpen: !this.state.sidebarIsOpen });
   };
 
-  setActiveLink = (link, history) => {
+  handleLinkClick = (path, history) => {
+    this.setActiveLink(path, () => {
+      history.push(path);
+    });
+  };
+
+  setActiveLink = (path, cb) => {
     this.setState(
       {
         links: this.state.links.map(l => ({
           ...l,
-          active: link.text === l.text
+          active: path === l.path
         }))
       },
       () => {
-        history.push(link.path);
+        if (cb) {
+          cb();
+        }
       }
     );
   };
@@ -52,7 +65,7 @@ class App extends Component {
             <Sidebar
               isOpen={sidebarIsOpen}
               toggle={this.toggleSidebar}
-              onLinkClick={this.setActiveLink}
+              onLinkClick={this.handleLinkClick}
               links={links}
             />
             <div

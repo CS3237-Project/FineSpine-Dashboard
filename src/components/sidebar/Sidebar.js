@@ -44,7 +44,7 @@ const Sidebar = ({ isOpen, toggle, links, onLinkClick, history }) => {
             <div
               data-tip
               data-for={i.text}
-              onClick={() => onLinkClick(i, history)}
+              onClick={() => onLinkClick(i.path, history)}
               className={`sidebar-link ${i.active ? "active" : ""}`}
             >
               {i.icon} {isOpen && i.text}
