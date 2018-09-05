@@ -15,7 +15,7 @@ const Sidebar = ({ isOpen, toggle, links, onLinkClick, history }) => {
     >
       <div className="sidebar-header">
         <div className="sidebar-toggle-button" onClick={toggle}>
-          {isOpen && <i className="fa fa-times" aria-hidden="true" />}
+          {isOpen && <i className="fa fa-arrow-left" aria-hidden="true" />}
           {!isOpen && <i className="fa fa-bars" aria-hidden="true" />}
         </div>
       </div>

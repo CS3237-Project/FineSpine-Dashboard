@@ -22,12 +22,17 @@ class StockPriceWidget extends React.Component {
     this.interval = setInterval(() => {
       const latestStockPrice = getStockPrice();
       const updatedData = this.getUpdatedData(latestStockPrice);
-      console.log(updatedData);
       this.setState({
         data: updatedData,
         currentStockPrice: `$${latestStockPrice.price}`
       });
     }, 1000);
+  }
+
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
 
   getUpdatedData = latest => {

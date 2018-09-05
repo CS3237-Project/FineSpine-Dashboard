@@ -1,6 +1,8 @@
 import { backgroundColor } from "../components/widget/colorPallete";
 import { getRandomArbitrary } from "./helpers";
 
+const RESPONSE_TIME = 1500;
+
 export const getMonthlyRevenue = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -27,7 +29,7 @@ export const getMonthlyRevenue = () =>
           }
         ]
       });
-    }, 2000);
+    }, RESPONSE_TIME);
   });
 
 export const getRevenueBreakdown = () =>
@@ -42,7 +44,7 @@ export const getRevenueBreakdown = () =>
         ],
         labels: ["Sales", "Commission", "Dividends", "Interest"]
       });
-    }, 2000);
+    }, RESPONSE_TIME);
   });
 
 export const getNewCustomers = () =>
@@ -71,7 +73,7 @@ export const getNewCustomers = () =>
           }
         ]
       });
-    }, 2000);
+    }, RESPONSE_TIME);
   });
 
 export const getStockPrice = () => {
