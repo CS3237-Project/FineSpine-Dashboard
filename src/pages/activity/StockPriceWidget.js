@@ -10,7 +10,7 @@ class StockPriceWidget extends React.Component {
       datasets: [
         {
           label: "Current Stock Price",
-          backgroundColor: backgroundColor[2],
+          backgroundColor: backgroundColor[4],
           data: []
         }
       ]
