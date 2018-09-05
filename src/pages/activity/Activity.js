@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import MonthlyRevenueWidget from "../home/MonthlyRevenueWidget";
+import StockPriceWidget from "./StockPriceWidget";
 import RevenueBreakdownWidget from "../home/RevenueBreakdownWidget";
 import NewCustomersWidget from "../home/NewCustomersWidget";
 import { PageContainer } from "../../components";
@@ -13,7 +13,7 @@ class ActivityPage extends React.Component {
           <Container fluid>
             <Row>
               <Col sm={12}>
-                <MonthlyRevenueWidget />
+                <StockPriceWidget />
               </Col>
             </Row>
             <Row>

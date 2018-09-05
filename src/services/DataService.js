@@ -1,4 +1,5 @@
 import { backgroundColor } from "../components/widget/colorPallete";
+import { getRandomArbitrary } from "./helpers";
 
 export const getMonthlyRevenue = () =>
   new Promise((resolve, reject) => {
@@ -72,3 +73,16 @@ export const getNewCustomers = () =>
       });
     }, 2000);
   });
+
+export const getStockPrice = () => {
+  const now = new Date();
+  return {
+    price: getRandomArbitrary(30, 33).toFixed(2),
+    time: now.toLocaleString("en-US", {
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: true
+    })
+  };
+};
