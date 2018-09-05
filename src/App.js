@@ -28,6 +28,12 @@ class App extends Component {
   componentDidMount() {
     //set active link based on window path
     this.setActiveLink(window.location.pathname);
+    this.handleWindowResize(); //close sidebar on small screens
+    window.addEventListener("resize", this.handleWindowResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleWindowResize);
   }
 
   toggleSidebar = () => {
@@ -54,6 +60,12 @@ class App extends Component {
         }
       }
     );
+  };
+
+  //handle sidebar open/close based on widow width
+  handleWindowResize = () => {
+    const width = window.innerWidth || document.body.clientWidth;
+    this.setState({ sidebarIsOpen: width >= 1136 });
   };
 
   render() {
