@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { HomePage, ActivityPage } from "./pages";
 import { Sidebar } from "./components";
+import ClassMqtt from "./components/Class/";
 import {
   SIDEBAR_WIDTH_OPEN,
   SIDEBAR_WIDTH_CLOSED
@@ -74,6 +75,7 @@ class App extends Component {
       <div className="App-wrapper">
         <Router>
           <div className="App">
+          <ClassMqtt />
             <Sidebar
               isOpen={sidebarIsOpen}
               toggle={this.toggleSidebar}
