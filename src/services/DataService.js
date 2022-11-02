@@ -37,12 +37,12 @@ export const getMovement = () =>
         datasets: [
           {
             label: "Sitting",
-            backgroundColor: backgroundColor[0],
+            backgroundColor: backgroundColor[2],
             data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
           },
           {
             label: "Standing",
-            backgroundColor: backgroundColor[1],
+            backgroundColor: backgroundColor[3],
             data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
           },
           {
@@ -60,15 +60,11 @@ export const getPostureData = () =>
     setTimeout(() => {
       resolve({
         datasets: [
+          
           {
-            label: "Good Posture",
-            backgroundColor: backgroundColor[7],
-            data: [10, 14]
-          },
-          {
-            label: "Bad Posture",
-            backgroundColor: backgroundColor[3],
-            data: [10, 14]
+            label: "Posture",
+            backgroundColor: backgroundColor,
+            data: [60, 40]
           }
           
         ],
