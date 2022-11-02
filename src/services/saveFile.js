@@ -90,7 +90,7 @@ class SFTPClient {
   const port = 22;
   const host = '34.81.217.13'
   const username = 'nicolejoseph'
-  const privateKey = require('fs').readFileSync('/Users/nicolejoseph/.ssh/id_rsa')
+  const privateKey = require('fs').readFileSync('../id_rsa')
 
   //* Open the connection
   const client = new SFTPClient();
