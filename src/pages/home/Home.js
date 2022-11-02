@@ -1,8 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
-import MonthlyRevenueWidget from "./MonthlyRevenueWidget";
-import RevenueBreakdownWidget from "./RevenueBreakdownWidget";
-import NewCustomersWidget from "./NewCustomersWidget";
+import MovementWidget from "./MovementWidget";
+import PostureBreakdownWidget from "./PostureBreakdownWidget";
 import { PageContainer } from "../../components";
 
 class HomePage extends React.Component {
@@ -11,17 +10,13 @@ class HomePage extends React.Component {
       <div className="HomePage">
         <PageContainer>
           <Container fluid>
-            <Row>
-              <Col sm={12}>
-                <MonthlyRevenueWidget />
-              </Col>
-            </Row>
+            
             <Row>
               <Col sm={12} lg={6}>
-                <RevenueBreakdownWidget />
+                <PostureBreakdownWidget />
               </Col>
               <Col sm={12} lg={6}>
-                <NewCustomersWidget />
+                <MovementWidget />
               </Col>
             </Row>
           </Container>

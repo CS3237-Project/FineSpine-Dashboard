@@ -2,7 +2,7 @@ export const backgroundColor = [
   "#44D7EB",
   "#52489C",
   "#5EFC8D",
-  "#2E6171",
+  "#8E1600",
   "#173753",
   "#173753",
   "#2E6171",

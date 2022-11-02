@@ -3,28 +3,51 @@ import { getRandomArbitrary } from "./helpers";
 
 const RESPONSE_TIME = 1500;
 
-export const getMonthlyRevenue = () =>
+export const getMovement = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December"
+          "12AM",
+          "1AM",
+          "2AM",
+          "3AM",
+          "4AM",
+          "5AM",
+          "6AM",
+          "7AM",
+          "8AM",
+          "9AM",
+          "10AM",
+          "11AM",
+          "12PM",
+          "1PM",
+          "2PM",
+          "3PM",
+          "4PM",
+          "5PM",
+          "6PM",
+          "7PM",
+          "8PM",
+          "9PM",
+          "10PM",
+          "11PM",
+
         ],
         datasets: [
           {
-            label: "Monthly Revenue",
+            label: "Sitting",
             backgroundColor: backgroundColor[0],
+            data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
+          },
+          {
+            label: "Standing",
+            backgroundColor: backgroundColor[1],
+            data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
+          },
+          {
+            label: "Walking",
+            backgroundColor: backgroundColor[4],
             data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
           }
         ]
@@ -32,17 +55,24 @@ export const getMonthlyRevenue = () =>
     }, RESPONSE_TIME);
   });
 
-export const getRevenueBreakdown = () =>
+export const getPostureData = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({
         datasets: [
           {
-            backgroundColor: backgroundColor,
-            data: [10, 14, 49, 22]
+            label: "Good Posture",
+            backgroundColor: backgroundColor[7],
+            data: [10, 14]
+          },
+          {
+            label: "Bad Posture",
+            backgroundColor: backgroundColor[3],
+            data: [10, 14]
           }
+          
         ],
-        labels: ["Sales", "Commission", "Dividends", "Interest"]
+        labels: ["Good Posture", "Bad Posture"]
       });
     }, RESPONSE_TIME);
   });

@@ -1,6 +1,6 @@
 import React from "react";
 import { Widget, DoughnutChart } from "../../components";
-import { getRevenueBreakdown } from "../../services/DataService";
+import { getPostureData } from "../../services/DataService";
 
 class RevenueBreakdownWidget extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class RevenueBreakdownWidget extends React.Component {
 
   componentDidMount() {
     this.setState({ currentState: "loading" }, () => {
-      getRevenueBreakdown().then(res => {
+      getPostureData().then(res => {
         this.setState({ data: res, currentState: null });
       });
     });
@@ -21,8 +21,8 @@ class RevenueBreakdownWidget extends React.Component {
     return (
       <Widget
         height={300}
-        title="Revenue Breakdown"
-        subtitle="YTD revenue broken down into individual streams"
+        title="Posture Breakdown"
+        subtitle="Posture broken into individual streams"
         currentState={currentState}
         body={
           <DoughnutChart

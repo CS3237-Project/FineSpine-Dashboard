@@ -1,8 +1,8 @@
 import React from "react";
 import { Widget, BarChart } from "../../components";
-import { getMonthlyRevenue } from "../../services/DataService";
+import { getMovement } from "../../services/DataService";
 
-class MonthlyRevenueWidget extends React.Component {
+class MovementWidget extends React.Component {
   state = {
     currentState: "loading",
     data: null
@@ -10,7 +10,7 @@ class MonthlyRevenueWidget extends React.Component {
 
   componentDidMount() {
     this.setState({ currentState: "loading" }, () => {
-      getMonthlyRevenue().then(res => {
+      getMovement().then(res => {
         this.setState({ data: res, currentState: null });
       });
     });
@@ -21,10 +21,10 @@ class MonthlyRevenueWidget extends React.Component {
     return (
       <Widget
         height={300}
-        title="Monthly Revenue"
-        subtitle="Sum of all revenue broken down by month"
+        title="Movement"
+        subtitle="Sum of all detected movements down by the hour"
         currentState={currentState}
-        badgeText="$15M"
+        // badgeText="$15M"
         body={
           <BarChart
             data={data}
@@ -49,4 +49,4 @@ class MonthlyRevenueWidget extends React.Component {
   }
 }
 
-export default MonthlyRevenueWidget;
+export default MovementWidget;
