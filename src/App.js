@@ -23,7 +23,7 @@ class App extends Component {
         text: "Activity",
         path: "/activity"
       }
-    ]
+    ],
   };
 
   componentDidMount() {
@@ -70,11 +70,12 @@ class App extends Component {
     this.setState({ sidebarIsOpen: width >= 1136 });
   };
 
-  handleLoad() {
+  handleLoad = () => {
     $.ajax({
-      url: "./services/saveFile.js",
-      context: document.body
-    })
+      url: "http://localhost:8000/",
+      method: 'GET',
+    }).then(console.log("files downloaded"))
+
   }
 
   render() {

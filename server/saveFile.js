@@ -1,17 +1,8 @@
-// sftp.js
-//
-// Use this sample code to connect to your SFTP To Go server and run some file operations using Node.js.
-//
-// 1) Paste this code into a new file (sftp.js)
-//
-// 2) Install dependencies
-//   npm install ssh2-sftp-client@^8.0.0
-//
-// 3) Run the script
-//   node sftp.js
-// 
-// Compatible with Node.js >= v12
-// Using ssh2-sftp-client v8.0.0
+var path = require('path');
+var http = require('http');
+
+var hostname = '127.0.0.1';
+var localport = 8000;
 
 let Client = require('ssh2-sftp-client');
 
@@ -74,7 +65,6 @@ class SFTPClient {
       console.error('Downloading failed:', err);
     }
   }
-
   async deleteFile(remoteFile) {
     console.log(`Deleting ${remoteFile}`);
     try {
@@ -85,30 +75,32 @@ class SFTPClient {
   }
 }
 
-(async () => {
-  
+var retrieveFiles = http.createServer(async function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
   const port = 22;
   const host = '34.81.217.13'
   const username = 'nicolejoseph'
-  const privateKey = require('fs').readFileSync('../id_rsa')
+  const privateKey = require('fs').readFileSync(path.resolve(__dirname, 'id_rsa'))
 
   //* Open the connection
   const client = new SFTPClient();
   await client.connect({ host, port, username, privateKey });
 
-//   //* List working directory files
-//   await client.listFiles(".");
-
-//   //* Upload local file to remote file
-//   await client.uploadFile("./local.txt", "./remote.txt");
-
   //* Download remote file to local file
-  await client.downloadFile("/home/pratyushghosh14/angleList.txt", "./data/angleList.txt");
-  await client.downloadFile("/home/pratyushghosh14/UserActivity.txt", "./data/UserActivity.txt");
+  await client.downloadFile("/home/pratyushghosh14/angleList.txt", path.resolve(__dirname, "./data/angleList.txt"));
+  await client.downloadFile("/home/pratyushghosh14/UserActivity.txt", path.resolve(__dirname, "./data/UserActivity.txt"));
 
-//   //* Delete remote file
-//   await client.deleteFile("./remote.txt");
+  console.log(`Downloads complete`);
 
   //* Close the connection
   await client.disconnect();
-})();
+
+  res.end(
+    JSON.stringify({
+      status: "success",
+    })
+  );
+});
+
+retrieveFiles.listen(localport, hostname);
+
