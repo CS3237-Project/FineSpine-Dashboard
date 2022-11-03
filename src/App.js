@@ -6,6 +6,7 @@ import {
   SIDEBAR_WIDTH_OPEN,
   SIDEBAR_WIDTH_CLOSED
 } from "./components/sidebar/Sidebar";
+import $ from 'jquery';
 
 class App extends Component {
   state = {
@@ -30,6 +31,7 @@ class App extends Component {
     this.setActiveLink(window.location.pathname);
     this.handleWindowResize(); //close sidebar on small screens
     window.addEventListener("resize", this.handleWindowResize);
+    window.addEventListener('load', this.handleLoad);
   }
 
   componentWillUnmount() {
@@ -67,6 +69,13 @@ class App extends Component {
     const width = window.innerWidth || document.body.clientWidth;
     this.setState({ sidebarIsOpen: width >= 1136 });
   };
+
+  handleLoad() {
+    $.ajax({
+      url: "./services/saveFile.js",
+      context: document.body
+    })
+  }
 
   render() {
     const { sidebarIsOpen, links } = this.state;
