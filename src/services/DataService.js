@@ -32,7 +32,6 @@ export const getMovement = () =>
           "9PM",
           "10PM",
           "11PM",
-
         ],
         datasets: [
           {
@@ -55,7 +54,25 @@ export const getMovement = () =>
     }, RESPONSE_TIME);
   });
 
-export const getPostureData = () =>
+export const getActivityData = () =>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        datasets: [
+          
+          {
+            label: "Activity",
+            backgroundColor: backgroundColor,
+            data: [60, 40, 20]
+          }
+          
+        ],
+        labels: ["Sitting", "Standing", "Walking"]
+      });
+    }, RESPONSE_TIME);
+  });
+
+  export const getPostureData = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve({

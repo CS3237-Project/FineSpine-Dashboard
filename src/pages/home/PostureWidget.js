@@ -2,7 +2,7 @@ import React from "react";
 import { Widget, BarChart } from "../../components";
 import { getMovement } from "../../services/DataService";
 
-class MovementWidget extends React.Component {
+class PostureWidget extends React.Component {
   state = {
     currentState: "loading",
     data: null
@@ -21,8 +21,8 @@ class MovementWidget extends React.Component {
     return (
       <Widget
         height={300}
-        title="Movement"
-        subtitle="Sum of all detected movements down by the hour"
+        title="Posture"
+        subtitle="Time spent in good or bad posture"
         currentState={currentState}
         // badgeText="$15M"
         body={
@@ -49,4 +49,4 @@ class MovementWidget extends React.Component {
   }
 }
 
-export default MovementWidget;
+export default PostureWidget;

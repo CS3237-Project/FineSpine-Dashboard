@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import { HomePage, ActivityPage } from "./pages";
+import { HomePage } from "./pages";
 import { Sidebar } from "./components";
 import {
   SIDEBAR_WIDTH_OPEN,
@@ -104,7 +104,7 @@ class App extends Component {
               }}
             >
               <Route exact path="/" component={HomePage} />
-              <Route exact path="/activity" component={ActivityPage} />
+              {/* <Route exact path="/activity" component={ActivityPage} /> */}
             </div>
           </div>
         </Router>

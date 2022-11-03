@@ -1,8 +1,8 @@
 import React from "react";
 import { Widget, DoughnutChart } from "../../components";
-import { getPostureData } from "../../services/DataService";
+import { getActivityData } from "../../services/DataService";
 
-class PostureBreakdownWidget extends React.Component {
+class ActivityBreakdownWidget extends React.Component {
   state = {
     currentState: "loading",
     data: null
@@ -10,7 +10,7 @@ class PostureBreakdownWidget extends React.Component {
 
   componentDidMount() {
     this.setState({ currentState: "loading" }, () => {
-      getPostureData().then(res => {
+      getActivityData().then(res => {
         this.setState({ data: res, currentState: null });
       });
     });
@@ -21,8 +21,8 @@ class PostureBreakdownWidget extends React.Component {
     return (
       <Widget
         height={300}
-        title="Posture Breakdown"
-        subtitle="Ratio between your good posture and bad posture time"
+        title="Activity Breakdown"
+        subtitle="Ratio between your activity status"
         currentState={currentState}
         body={
           <DoughnutChart
@@ -37,4 +37,4 @@ class PostureBreakdownWidget extends React.Component {
   }
 }
 
-export default PostureBreakdownWidget;
+export default ActivityBreakdownWidget;
