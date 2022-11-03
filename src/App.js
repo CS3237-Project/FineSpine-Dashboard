@@ -18,11 +18,11 @@ class App extends Component {
         path: "/",
         active: true
       },
-      {
-        icon: <i className="fa fa-sliders" aria-hidden="true" />,
-        text: "Activity",
-        path: "/activity"
-      }
+      // {
+      //   icon: <i className="fa fa-sliders" aria-hidden="true" />,
+      //   text: "Activity",
+      //   path: "/activity"
+      // }
     ],
   };
 
@@ -74,7 +74,12 @@ class App extends Component {
     $.ajax({
       url: "http://localhost:8000/",
       method: 'GET',
-    }).then(console.log("files downloaded"))
+    }).then(function() {
+      $.ajax({
+        url: "app.py",
+        context: document.body
+      })
+    })
 
   }
 
