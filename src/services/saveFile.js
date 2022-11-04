@@ -1,5 +1,8 @@
 var path = require('path');
 var http = require('http');
+const express = require('express');
+ 
+var retrieveFiles = express();
 
 var hostname = '127.0.0.1';
 var localport = 8000;
@@ -77,6 +80,7 @@ class SFTPClient {
 
 var retrieveFiles = http.createServer(async function (req, res) {
   res.setHeader('Content-Type', 'application/json');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
   const port = 22;
   const host = '34.81.217.13'
   const username = 'nicolejoseph'

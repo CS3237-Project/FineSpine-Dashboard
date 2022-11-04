@@ -7,6 +7,7 @@ import {
   SIDEBAR_WIDTH_CLOSED
 } from "./components/sidebar/Sidebar";
 import $ from 'jquery';
+import { getProcessedData } from "./services/DataService";
 
 class App extends Component {
   state = {
@@ -74,11 +75,8 @@ class App extends Component {
     $.ajax({
       url: "http://localhost:8000/",
       method: 'GET',
-    }).then(function() {
-      $.ajax({
-        url: "app.py",
-        context: document.body
-      })
+    }).always(function() {
+      getProcessedData()
     })
 
   }

@@ -21,7 +21,7 @@ class ActivityWidget extends React.Component {
     return (
       <Widget
         height={300}
-        title="Activity"
+        title="Activity Timeline"
         subtitle="Time spent doing each activity"
         currentState={currentState}
         // badgeText="$15M"
