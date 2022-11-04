@@ -71,11 +71,11 @@ class App extends Component {
     this.setState({ sidebarIsOpen: width >= 1136 });
   };
 
-  handleLoad = () => {
+   handleLoad = () => {
     $.ajax({
       url: "http://localhost:8000/",
       method: 'GET',
-    }).always(function() {
+    }).then(function() {
       getProcessedData()
     })
 
