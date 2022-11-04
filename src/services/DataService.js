@@ -1,7 +1,7 @@
 import { backgroundColor } from "../components/widget/colorPallete";
 import { getRandomArbitrary } from "./helpers";
 
-const RESPONSE_TIME = 1500;
+const RESPONSE_TIME = 3000;
 
 let activityRatio = []
 let postureRatio = []

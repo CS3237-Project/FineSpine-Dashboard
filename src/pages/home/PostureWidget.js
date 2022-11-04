@@ -22,7 +22,7 @@ class PostureWidget extends React.Component {
       <Widget
         height={300}
         title="Posture Timeline"
-        subtitle="Time spent in good or bad posture"
+        subtitle="Time spent in good or bad posture based on time of day"
         currentState={currentState}
         // badgeText="$15M"
         body={

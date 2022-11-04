@@ -22,7 +22,7 @@ class ActivityWidget extends React.Component {
       <Widget
         height={300}
         title="Activity Timeline"
-        subtitle="Time spent doing each activity"
+        subtitle="Time spent doing each activity based on time of day"
         currentState={currentState}
         // badgeText="$15M"
         body={
