@@ -3,22 +3,38 @@ import { getRandomArbitrary } from "./helpers";
 
 const RESPONSE_TIME = 1500;
 
+let activityRatio = []
+let postureRatio = []
+let activityData = []
+let sitting = []
+let standing = []
+let walking = []
+
 export const getProcessedData = () => {
   fetch('http://127.0.0.1:5000/processData',{
     'methods':'GET',
     headers : {
       'Content-Type':'application/json',
       'Access-Control-Allow-Origin': 'http://127.0.0.1:5000',
-    }
+    },
   })
   .then(response => response.json())
-  .then(response => console.log(response))
+  .then(response => {
+    activityRatio = JSON.parse(response.activityRatio)
+    postureRatio = JSON.parse(response.postureRatio)
+    activityData = JSON.parse(response.activityData)
+    sitting = activityData[0]
+    standing = activityData[1]
+    walking = activityData[2]
+    console.log(activityRatio)
+  })
   .catch(error => console.log(error))
 }
 
 export const getMovement = () =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
+      console.log(sitting)
       resolve({
         labels: [
           "12AM",
@@ -50,17 +66,17 @@ export const getMovement = () =>
           {
             label: "Sitting",
             backgroundColor: backgroundColor[2],
-            data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
+            data: sitting
           },
           {
             label: "Standing",
             backgroundColor: backgroundColor[3],
-            data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
+            data: standing
           },
           {
             label: "Walking",
             backgroundColor: backgroundColor[4],
-            data: [10, 14, 49, 22, 49, 15, 37, 90, 68, 10, 39, 100]
+            data: walking
           }
         ]
       });
@@ -76,7 +92,7 @@ export const getActivityData = () =>
           {
             label: "Activity",
             backgroundColor: backgroundColor,
-            data: [60, 40, 20]
+            data: activityRatio
           }
           
         ],
@@ -94,7 +110,7 @@ export const getActivityData = () =>
           {
             label: "Posture",
             backgroundColor: backgroundColor,
-            data: [60, 40]
+            data: postureRatio
           }
           
         ],
