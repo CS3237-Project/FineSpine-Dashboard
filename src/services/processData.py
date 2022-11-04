@@ -13,7 +13,7 @@ from flask import Flask, request, jsonify, make_response
 from flask_cors import CORS
 
 flask_app = Flask(__name__)
-cors = CORS();
+cors = CORS(flask_app);
 
 @flask_app.route("/processData", methods=["GET"])
 def processData():
