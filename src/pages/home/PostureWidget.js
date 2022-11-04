@@ -1,6 +1,6 @@
 import React from "react";
 import { Widget, BarChart } from "../../components";
-import { getMovement } from "../../services/DataService";
+import { getPosture } from "../../services/DataService";
 
 class PostureWidget extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class PostureWidget extends React.Component {
 
   componentDidMount() {
     this.setState({ currentState: "loading" }, () => {
-      getMovement().then(res => {
+      getPosture().then(res => {
         this.setState({ data: res, currentState: null });
       });
     });

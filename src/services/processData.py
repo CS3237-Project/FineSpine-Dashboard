@@ -20,15 +20,19 @@ def processData():
   postureRatio = ''
   activityRatio = ''
   activityData = ''
-  
-  df_activity = pd.read_csv(r'./data/UserActivity.txt', header=None)
+  postureData = ''
+
+  try:
+    df_activity = pd.read_csv(r'./data/UserActivity.txt', header=None, error_bad_lines=False)
+  except:
+    df_activity = pd.DataFrame()
+
   if not df_activity.empty:
     df_activity.dropna()
     df_activity.columns = ["time", "activity"]
     df_activity['activity'].value_counts()
     activityRatio = [df_activity['activity'].value_counts().Sitting, df_activity['activity'].value_counts().Standing, df_activity['activity'].value_counts().Walking]
     df_activity['time'] = pd.to_datetime(df_activity['time'])  
-    df_activity_hours = df_activity.groupby([df_activity['time'].dt.hour]).activity.sum()
     df_activity.groupby([df_activity['time'].dt.hour]).activity.value_counts()
     df_act_counts = df_activity.groupby([df_activity['time'].dt.hour, df_activity['activity']]).agg(activity=('activity', 'unique'), counts=('time', 'nunique'))
 
@@ -55,17 +59,40 @@ def processData():
 
     activityData = [sitting, standing, walking]
 
-  df_angles = pd.read_csv(r'./data/angleList.txt', header=None)
+  try:
+    df_angles = pd.read_csv(r'./data/angleList.txt', header=None, error_bad_lines=False)
+  except:
+    df_angles = pd.DataFrame()
   if not df_angles.empty:
     df_angles.dropna()
     df_angles.columns = ["time", "angle", "posture", "info"]
     df_angles['posture'].value_counts()
     postureRatio = [df_angles['posture'].value_counts().GOOD, df_angles['posture'].value_counts().BAD]
+    df_angles['time'] = pd.to_datetime(df_angles['time'])  
+    df_angles.groupby([df_angles['time'].dt.hour]).posture.value_counts()
+    df_angle_counts = df_angles.groupby([df_angles['time'].dt.hour, df_angles['posture']]).agg(posture=('posture', 'unique'), counts=('time', 'nunique'))
+
+    good = []
+    for i in range(24):
+      try:
+        good.append(df_angle_counts.filter(items = [(i, 'GOOD')], axis = 0)['counts'].values[0])
+      except:
+        good.append(0)
+
+    bad = []
+    for i in range(24):
+      try:
+        bad.append(df_act_counts.filter(items = [(i, 'BAD')], axis = 0)['counts'].values[0])
+      except:
+        bad.append(0)
+
+    postureData = [good, bad]
+
 
   response = {}
   response = jsonify({
       'postureRatio': str(postureRatio),
-      # postureData: postureData,
+      'postureData': str(postureData),
       'activityRatio':str(activityRatio),
       'activityData': str(activityData),
   })
