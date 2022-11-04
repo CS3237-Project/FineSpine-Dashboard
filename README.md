@@ -8,7 +8,7 @@ npm start
 
 ### Run the Node.js server to retrieve data
 ```
-node src/services/saveFiles.js
+node src/services/saveFile.js
 ```
 
 ### Run the Flask server to process data
