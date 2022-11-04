@@ -8,4 +8,4 @@ npm start
 
 ### Run the server
 ```
-node server/saveFiles.js
+node src/services/saveFiles.js
