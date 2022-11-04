@@ -82,7 +82,7 @@ def processData():
     bad = []
     for i in range(24):
       try:
-        bad.append(df_act_counts.filter(items = [(i, 'BAD')], axis = 0)['counts'].values[0])
+        bad.append(df_angle_counts.filter(items = [(i, 'BAD')], axis = 0)['counts'].values[0])
       except:
         bad.append(0)
 
