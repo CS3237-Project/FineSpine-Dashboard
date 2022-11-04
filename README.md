@@ -6,6 +6,13 @@ Made with React.js, Node.js, Chart.js, and Bootstrap.
 npm start
 ```
 
-### Run the server
+### Run the Node.js server to retrieve data
 ```
 node src/services/saveFiles.js
+```
+
+### Run the Flask server to process data
+```
+cd src/services
+flask --app processData --debug run
+```
